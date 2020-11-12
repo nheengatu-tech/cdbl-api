@@ -1,0 +1,16 @@
+require('./db')
+const express = require('express')
+const { json } = require('body-parser')
+const cors = require('cors')
+
+var userRoutes = require('./controllers/userController')
+var bannerRoutes = require('./controllers/bannerController')
+var authRoutes = require('./controllers/authController')
+
+var app = express()
+app.use(json())
+app.use(cors({ origin:'http://localhost:3000' }))
+app.listen(4000,() => console.log('Server started at : 4000'))
+app.use('/user', userRoutes)
+app.use('/login', authRoutes)
+app.use('/banner', bannerRoutes)
