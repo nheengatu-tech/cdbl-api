@@ -28,6 +28,7 @@ router.post('/', (req, res) => {
       }
     
       const file = req.files.bannerImage;
+    //   const url = "http://52.67.51.241:4000/uploads/" + file.name;
       const url = path.join(__dirname, "../uploads", file.name);
     
       file.mv(url, err => {
