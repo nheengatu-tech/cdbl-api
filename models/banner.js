@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 
 const Banner = mongoose.model('Banner',
   {
-    url : { type: String },
-    src : { type: String },
-  },
-  'banners')
+    name: { type: String }, 
+    redirectUrl : { type: String },
+    bannerImage : { type: String },
+  }, 'banners')
 
 module.exports = { Banner }

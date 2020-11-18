@@ -11,11 +11,11 @@ router.get('/', verifyJWT,  (req, res) => {
     })
 })
 
-router.get('/list/doctors', verifyJWT, (req, res) => {
-    console.log('/list/doctors');
-    User.find((err, docs) => {
-        if (!err) res.send(docs.filter(user => user.role === "doctor"))
-        else console.log('Error while retrieving all doctors : ' + JSON.stringify(err, undefined, 2))
+router.get('/user/:id', verifyJWT, (req, res) => {
+    console.log('/user/:id user');
+    Banner.find((err, docs) => {
+        if (!err) res.send(docs.filter(user => user._id === req.params.id))
+        else console.log('Error while retrieving selected user : ' + JSON.stringify(err, undefined, 2))
     })
 })
 
