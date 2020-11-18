@@ -28,10 +28,10 @@ router.post('/', (req, res) => {
       }
     
       const file = req.files.bannerImage;
-    //   const url = "http://52.67.51.241:4000/uploads/" + file.name;
-      const url = path.join(__dirname, "../uploads", file.name);
+      const imageUrl = "http://52.67.51.241:4000/uploads/" + file.name;
+      const pathUrl = path.join(__dirname, "../uploads", file.name);
     
-      file.mv(url, err => {
+      file.mv(pathUrl, err => {
         if (err) {
           console.error(err);
           return res.status(500).send(err);
@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
         var newRecord = new Banner({
             name: req.body.name,
             redirectUrl: req.body.redirectUrl,
-            bannerImage: url,
+            bannerImage: imageUrl,
         })
 
         newRecord.save((err, docs) => {
