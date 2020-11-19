@@ -15,6 +15,9 @@ app.use(fileUpload());
 app.get('/', (req, res) => {
   res.send('api domboscoleste is up!')
 })
+app.get('/healthcheck', (req, res) => {
+  res.send('system is running good...')
+})
 app.use('/user', userRoutes)
 app.use('/login', authRoutes)
 app.use('/banners', bannerRoutes)
