@@ -18,4 +18,4 @@ app.use('/banners', bannerRoutes)
 app.use('/uploads', express.static('uploads'));
 
 
-app.listen(4000,() => console.log('Server started at : 4000'))
+app.listen(8080,() => console.log('Server started at : 8080'))
