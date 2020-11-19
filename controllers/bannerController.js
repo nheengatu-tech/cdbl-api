@@ -4,7 +4,7 @@ const verifyJWT = require("../verifyToken")
 const router = express.Router()
 path = require('path')
   
-router.get('/', verifyJWT, (req, res) => {
+router.get('/', (req, res) => {
     console.log('/banners');
     Banner.find((err, docs) => {
         if (!err) res.send(docs)
@@ -12,8 +12,8 @@ router.get('/', verifyJWT, (req, res) => {
     })
 })
 
-router.get('/list/:id', verifyJWT, (req, res) => {
-    console.log('/list/:id banner');
+router.get('/banner/:id', verifyJWT, (req, res) => {
+    console.log('/banners/:id delete banner');
     Banner.find((err, docs) => {
         if (!err) res.send(docs.filter(banner => banner._id === req.params.id))
         else console.log('Error while retrieving selected banner : ' + JSON.stringify(err, undefined, 2))
