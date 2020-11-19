@@ -12,10 +12,13 @@ var app = express()
 app.use(json())
 app.use(cors({ origin:'http://localhost:3000' }))
 app.use(fileUpload());
+app.get('/', (req, res) => {
+  res.send('api domboscoleste is up!')
+})
 app.use('/user', userRoutes)
 app.use('/login', authRoutes)
 app.use('/banners', bannerRoutes)
 app.use('/uploads', express.static('uploads'));
 
 
-app.listen(8080,() => console.log('Server started at : 8080'))
+app.listen(4000,() => console.log('Server started at : 4000'))
