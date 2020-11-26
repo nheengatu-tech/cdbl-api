@@ -7,7 +7,10 @@ path = require('path')
 router.get('/', (req, res) => {
     console.log('/banners');
     Banner.find((err, docs) => {
-        if (!err) res.send(docs)
+        if (!err) {
+            console.log('banner route ended well');
+            res.send(docs)
+        } 
         else console.log('Error while retrieving all records : ' + JSON.stringify(err, undefined, 2))
     })
 })
@@ -15,7 +18,10 @@ router.get('/', (req, res) => {
 router.get('/banner/:id', verifyJWT, (req, res) => {
     console.log('/banners/:id delete banner');
     Banner.find((err, docs) => {
-        if (!err) res.send(docs.filter(banner => banner._id === req.params.id))
+        if (!err) {
+            console.log('banner delete route ended well');
+            res.send(docs.filter(banner => banner._id === req.params.id))
+        }
         else console.log('Error while retrieving selected banner : ' + JSON.stringify(err, undefined, 2))
     })
 })

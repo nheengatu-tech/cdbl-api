@@ -13,9 +13,11 @@ app.use(json())
 app.use(cors({ origin:'http://localhost:3000' }))
 app.use(fileUpload());
 app.get('/', (req, res) => {
+  console.log("/")
   res.send('api domboscoleste is up!')
 })
 app.get('/healthcheck', (req, res) => {
+  console.log("/healthcheck")
   res.send('system is running good...')
 })
 app.use('/user', userRoutes)
