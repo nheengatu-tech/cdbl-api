@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
       }
     
       const file = req.files.bannerImage;
-      const imageUrl = "http://18.230.195.205/:4000/uploads/" + file.name;
+      const imageUrl = "https://api.domboscoleste.com.br/uploads/" + file.name;
       const pathUrl = path.join(__dirname, "../uploads", file.name);
     
       file.mv(pathUrl, err => {
