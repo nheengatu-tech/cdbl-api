@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const uri = "mongodb+srv://dbUserEld:dbPwEld@api.dhmrr.gcp.mongodb.net/db-cdbl?retryWrites=true&w=majority";
+// const uri = "mongodb+srv://dbUserEld:dbPwEld@api.dhmrr.gcp.mongodb.net/db-cdbl?retryWrites=true&w=majority";
+const uri = "mongodb+srv://dbUserEld:dbPwEld@api.dhmrr.mongodb.net/db-cdbl?retryWrites=true&w=majority";
 
-// project = eldorado
-// cluster-name = api
+// project = eldorado / beyes
+// cluster-name = api / api
 // username = dbUserEld
 // pw = db-cdbl
 
