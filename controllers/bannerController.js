@@ -1,4 +1,5 @@
 const express = require('express')
+const banner = require('../models/banner')
 const { Banner } = require('../models/banner')
 const verifyJWT = require("../verifyToken")
 const router = express.Router()
@@ -15,15 +16,15 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/banner/:id', verifyJWT, (req, res) => {
-    console.log('/banners/:id delete banner');
-    Banner.find((err, docs) => {
-        if (!err) {
-            console.log('banner delete route ended well');
-            res.send(docs.filter(banner => banner._id === req.params.id))
-        }
-        else console.log('Error while retrieving selected banner : ' + JSON.stringify(err, undefined, 2))
-    })
+router.delete('/:id', verifyJWT, (req, res) => {
+    console.log('deleting banner ' + req.params.id);
+    Banner.findByIdAndRemove({ _id: req.params.id })
+        .then(banner => {
+            res.send(banner)
+        })
+        .catch(err => {
+            console.log('Error while retrieving selected banner : ' + JSON.stringify(err, undefined, 2))
+        })
 })
 
 router.post('/', (req, res) => {
