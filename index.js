@@ -11,6 +11,11 @@ var authRoutes = require('./controllers/authController')
 var app = express()
 app.use(json())
 app.use(cors({ origin:'http://localhost:3000' }))
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(fileUpload());
 app.get('/', (req, res) => {
   console.log("/")
