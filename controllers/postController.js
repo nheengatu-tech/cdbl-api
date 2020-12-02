@@ -1,42 +1,32 @@
 const express = require('express')
-const banner = require('../models/banner')
-const { Banner } = require('../models/banner')
+const { Post } = require('../models/post')
 const verifyJWT = require("../verifyToken")
 const router = express.Router()
 path = require('path')
   
 router.get('/', (req, res) => {
-    console.log('/banners');
-    Banner.find((err, docs) => {
+    console.log('GET /posts');
+    Post.find((err, docs) => {
         if (!err) {
-            console.log('banner route ended well');
             res.send(docs)
         } 
-        else console.log('Error while retrieving all records : ' + JSON.stringify(err, undefined, 2))
+        else console.log('Error while retrieving all posts records : ' + JSON.stringify(err, undefined, 2))
     })
 })
 
 router.delete('/:id', verifyJWT, (req, res) => {
-    console.log('deleting banner ' + req.params.id);
-    Banner.findByIdAndRemove({ _id: req.params.id })
-        .then(banner => {
-            res.send(banner)
+    console.log('DELETE /posts/' + req.params.id);
+    Post.findByIdAndRemove({ _id: req.params.id })
+        .then(post => {
+            res.send(post)
         })
         .catch(err => {
-            console.log('Error while retrieving selected banner : ' + JSON.stringify(err, undefined, 2))
+            console.log('Error while retrieving selected post : ' + JSON.stringify(err, undefined, 2))
         })
-    // Banner.find((err, docs) => {
-    //     if (!err) {
-    //         const newRecord = docs.filter(banner => banner._id === req.params.id.toString())
-    //         console.log(newRecord);
-    //         res.send(newRecord)
-    //     }
-    //     else console.log('Error while retrieving selected banner : ' + JSON.stringify(err, undefined, 2))
-    // })
 })
 
 router.post('/', (req, res) => {
-    console.log('post /banner');
+    console.log('POST /posts');
 
     if (req.files === null) {
         return res.status(400).json({ msg: 'No file uploaded' });
@@ -52,10 +42,12 @@ router.post('/', (req, res) => {
           return res.status(500).send(err);
         }
     
-        var newRecord = new Banner({
-            name: req.body.name,
-            redirectUrl: req.body.redirectUrl,
-            bannerImage: imageUrl,
+        var newRecord = new Post({
+            title: req.body.title, 
+            description : req.body.description,
+            text : req.body.text,
+            postImage : imageUrl,
+            createdAt: new Date().toLocaleString()
         })
 
         newRecord.save((err, docs) => {

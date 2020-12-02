@@ -6,6 +6,7 @@ const fileUpload = require('express-fileupload');
 
 var userRoutes = require('./controllers/userController')
 var bannerRoutes = require('./controllers/bannerController')
+var postRoutes = require('./controllers/postController')
 var authRoutes = require('./controllers/authController')
 
 var app = express()
@@ -28,6 +29,7 @@ app.get('/healthcheck', (req, res) => {
 app.use('/user', userRoutes)
 app.use('/login', authRoutes)
 app.use('/banners', bannerRoutes)
+app.use('/posts', postRoutes)
 app.use('/uploads', express.static('uploads'));
 
 
