@@ -6,6 +6,7 @@ const Post = mongoose.model('Post',
     description : { type: String },
     text : { type: String },
     postImage : { type: String },
+    path: { type: String },
     createdAt: { type: String }
   }, 'posts')
 

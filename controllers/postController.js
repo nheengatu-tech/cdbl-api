@@ -47,6 +47,7 @@ router.post('/', (req, res) => {
             description : req.body.description,
             text : req.body.text,
             postImage : imageUrl,
+            path : req.body.path,
             createdAt: new Date().toLocaleString()
         })
 
