@@ -48,6 +48,7 @@ router.post('/', (req, res) => {
             name: req.body.name,
             redirectUrl: req.body.redirectUrl,
             bannerImage: imageUrl,
+            createdAt: new Date().toLocaleString()
         })
 
         newRecord.save((err, docs) => {
