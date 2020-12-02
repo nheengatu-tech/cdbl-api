@@ -25,6 +25,16 @@ router.delete('/:id', verifyJWT, (req, res) => {
         })
 })
 
+router.get('/:id', (req, res) => {
+    console.log('GET /posts/' + req.params.id);
+    Post.find((err, docs) => {
+        if (!err) {
+            res.send(docs.filter(doc => doc.path === req.params.id))
+        } 
+        else console.log("Error while retrieving " + req.params.id + " posts records : " + JSON.stringify(err, undefined, 2))
+    })
+})
+
 router.post('/', (req, res) => {
     console.log('POST /posts');
 
