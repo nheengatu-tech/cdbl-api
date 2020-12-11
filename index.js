@@ -14,6 +14,10 @@ app.use(json())
 // app.use(cors({ origin:'http://localhost:3000' }))
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3000');
+  res.setHeader("Access-Control-Allow-Origin", 'http://localhost:4000');
+  res.setHeader("Access-Control-Allow-Origin", 'https://api.domboscoleste.com.br');
+  res.header("Access-Control-Allow-Methods", "POST, GET, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
