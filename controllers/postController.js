@@ -41,8 +41,7 @@ router.post('/', (req, res) => {
     if (req.files === null) {
         return res.status(400).json({ msg: 'No file uploaded' });
       }
-    
-      const file = req.files.bannerImage;
+      const file = req.files.postImage;
       const imageUrl = "https://api.domboscoleste.com.br/uploads/" + file.name;
       const pathUrl = path.join(__dirname, "../uploads", file.name);
     
