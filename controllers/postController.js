@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
       const file = req.files.postImage;
       const imageUrl = "https://api.domboscoleste.com.br/uploads/" + file.name;
       const pathUrl = path.join(__dirname, "../uploads", file.name);
-    
+      console.log({file})
       file.mv(pathUrl, err => {
         if (err) {
           console.error(err);
